@@ -1,4 +1,4 @@
-const { app, BrowserWindow, nativeImage, Tray, Menu } = require('electron');
+const { app, BrowserWindow, nativeImage, Tray } = require('electron');
 const path = require('path')
 
 const createWindow = () => {

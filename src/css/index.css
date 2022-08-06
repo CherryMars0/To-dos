@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p {
+    font-size: 35px;
+}
+
+
+/* 主窗口 */
+#main {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+}
+
+.left {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date {
+    width: 95%;
+    height: 100px;
+    background-color: #89f7fe;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.date p{
+    font-size: 30px;
+    line-height: 60px;
+}
+.todo{
+    width: 95%;
+    height: 720px;
+    background-color: #89f7fe;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.right {
+    padding: 10px;
+    margin: 10px;
+    margin-left: 0;
+    width: 80%;
+    border-radius: 5px;
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.daysContainer {
+    width: 1080px;
+    height: 100%;
+}
+
+.days {
+    float: left;
+    width: 180px;
+    height: 125px;
+    padding: 10px;
+    border: 1px solid #e4e4e4;
+}
+.days_tips{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.days_tips span{
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.days_tips span:nth-child(1){
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+}
+.days_tips span:nth-child(2){
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+}
+.days_tips span:nth-child(3){
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+.days_time{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+}
+.days_todos{
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+}

@@ -5,74 +5,446 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-dos</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body,
-        .container {
-            height: 100%;
-            width: 100%;
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-
-        /* 主窗口 */
-        #main {
-            height: 100%;
-            width: 100%;
-            border-radius: 5px;
-            display: flex;
-        }
-
-        .left {
-            width: 20%;
-            height: 100%;
-            background-color: azure;
-        }
-
-        .right {
-            padding: 5px;
-            width: 80%;
-            height: 100%;
-            background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .days {
-            width: 15%;
-            height: 140.5px;
-            border: 1px solid #e4e4e4;
-            padding: 10px;
-        }
-    </style>
+    <title>To-Dos</title>
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
     <div class="container">
         <div id="main">
             <div class="left">
-                <p ></p>
+                <div class="date">
+                    <p>today time ...</p>
+                </div>
+                <div class="todo">
+                    <p>todo history ...</p>
+                </div>
             </div>
             <div class="right">
-
+                <div class="daysContainer">
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="days_tips">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="days_time">
+                            <p>1</p>
+                        </div>
+                        <div class="days_todos">
+                            <p>something todos ...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
-<script src="../controller/index.js"></script>
+
+<script src="../runtime.js"></script>
+<script src="../render/index.js"></script>
 
 </html>
