@@ -1,0 +1,12 @@
+{
+  "name": "To-dos",
+  "version": "1.0.0",
+  "main": "App.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn electron ./src/App.js"
+  },
+  "devDependencies": {
+    "electron": "^20.0.1"
+  }
+}
