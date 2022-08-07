@@ -12,6 +12,7 @@ const createWindow = () => {
         }
     })
     mainWindow.loadFile("./views/index.html");
+    //mainWindow.setMenu(null);
 }
 
 
