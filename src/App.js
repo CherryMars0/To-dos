@@ -1,4 +1,4 @@
-const { app, BrowserWindow, nativeImage, Tray } = require('electron');
+const { app, BrowserWindow, nativeImage, Tray, ipcMain } = require('electron');
 const path = require('path')
 
 const createWindow = () => {
@@ -9,8 +9,17 @@ const createWindow = () => {
         icon: nativeImage.createFromPath('../assets/img/favicon.ico'),
         webPreferences: {
             preload: path.join(__dirname, './preload.js'),
+            webSecurity: false,
+            nodeIntegration: true,
+            contextIsolation: false
         }
     })
+    ipcMain.on('open-devtools', () => {
+        mainWindow.openDevTools();
+    });
+    ipcMain.on('reload', () => {
+        mainWindow.reload();
+    });
     mainWindow.loadFile("./views/index.html");
     //mainWindow.setMenu(null);
 }
@@ -40,6 +49,7 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
+        tray = null;
         app.quit()
     }
 });

@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 html,
@@ -240,6 +241,7 @@ body,
     border-bottom: 1px solid red;
     border-radius: 5px;
     cursor: pointer;
+    
 }
 
 .options_selections p:hover {
