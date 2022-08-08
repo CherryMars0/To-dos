@@ -63,8 +63,16 @@ body,
     border-radius: 5px;
     padding: 20px;
     text-align: center;
+    padding: 5px;
 }
 
+.todoItem {
+    width: 100%;
+    height: 660px;
+    margin-top: 30px;
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+}
 
 .right {
     padding: 10px;
@@ -136,7 +144,7 @@ body,
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: red;
+    background-color: #F25F58;
 }
 
 .days_tips span:nth-child(2) {
@@ -144,7 +152,7 @@ body,
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: green;
+    background-color: #FBBE3C;
 }
 
 .days_tips span:nth-child(3) {
@@ -152,7 +160,7 @@ body,
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: #58CB42;
 }
 
 .days_time {
@@ -205,11 +213,11 @@ body,
 }
 
 .options_btn {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     position: absolute;
     bottom: 5px;
-    left: 0;
+    left: calc(50% - 16px);
     border-radius: 50%;
     background: url('../../assets/icon/settings-3-line.png');
     background-repeat: no-repeat;
@@ -221,15 +229,17 @@ body,
 
 .options_selections {
     position: absolute;
-    width: 150px;
+    width: 140px;
     height: 200px;
     background-image: linear-gradient(to bottom, #F3F3F3 0%, #eef1f5 50%, #fff 100%);
-    left: 0;
+    left: calc(50% - 14px);
     bottom: 50px;
     border-radius: 5px;
     border-bottom-left-radius: 0;
     font-size: 14px;
     padding: 5px;
+    display: none;
+    opacity: 0.9;
 }
 
 .options_selections p {
@@ -241,7 +251,7 @@ body,
     border-bottom: 1px solid red;
     border-radius: 5px;
     cursor: pointer;
-    
+
 }
 
 .options_selections p:hover {

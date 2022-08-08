@@ -20,8 +20,11 @@ const createWindow = () => {
     ipcMain.on('reload', () => {
         mainWindow.reload();
     });
+    ipcMain.on('closed', () => {
+        app.quit();
+    });
     mainWindow.loadFile("./views/index.html");
-    //mainWindow.setMenu(null);
+    mainWindow.setMenu(null);
 }
 
 
