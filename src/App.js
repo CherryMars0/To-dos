@@ -21,6 +21,7 @@ const createWindow = () => {
         mainWindow.reload();
     });
     ipcMain.on('closed', () => {
+        tray = null;
         app.quit();
     });
     mainWindow.loadFile("./views/index.html");

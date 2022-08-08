@@ -28,10 +28,12 @@ class Settings {
         this.settings.addEventListener('click', () => {
             if (this.Switch) {
                 this.selections.style = 'display:none';
+                this.settings.style.transform = 'rotate(-30deg)';
                 this.Switch = !this.Switch
             } else {
                 this.selections.style = 'display:block';
                 this.Switch = !this.Switch
+                this.settings.style.transform = 'rotate(30deg)';
             }
         })
     }
@@ -40,12 +42,21 @@ class Settings {
 class Today {
     constructor() {
         this.root = document.querySelector('.date');
-
+        this.Date = new Date();
+        this.week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        this.year = this.Date.getFullYear();
+        this.month = this.Date.getMonth();
+        this.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        this.date = this.Date.getDate();
+        this.day = this.Date.getDay();
+        this.nowDay = "On " + this.date + " " + this.months[this.month] + " " + this.year;
+        this.nowWeek = this.week[this.day];
         this.init();
     }
 
-    init(){
-        
+    init() {
+        this.root.childNodes[1].innerHTML = this.nowDay;
+        this.root.childNodes[3].innerHTML = this.nowWeek;
     }
 }
 
