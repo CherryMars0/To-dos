@@ -51,12 +51,28 @@ class Today {
         this.day = this.Date.getDay();
         this.nowDay = "On " + this.date + " " + this.months[this.month] + " " + this.year;
         this.nowWeek = this.week[this.day];
+        this.Switch = true;
         this.init();
     }
 
     init() {
         this.root.childNodes[1].innerHTML = this.nowDay;
         this.root.childNodes[3].innerHTML = this.nowWeek;
+        this.root.childNodes[5].addEventListener('click', () => {
+            if (this.Switch) {
+                this.root.childNodes[5].style.transform = 'rotate(-180deg)';
+                this.root.childNodes[1].style.display = 'none';
+                this.root.childNodes[3].style.display = 'none';
+                this.root.style.transform = 'rotateY(-180deg)';
+                this.Switch = !this.Switch
+            } else {
+                this.root.childNodes[5].style.transform = 'rotate(180deg)';
+                this.root.style.transform = 'rotateY(0deg)';
+                this.root.childNodes[1].style.display = 'block';
+                this.root.childNodes[3].style.display = 'block';
+                this.Switch = !this.Switch
+            }
+        })
     }
 }
 
