@@ -128,21 +128,31 @@ body,
     height: 135px;
     padding: 10px;
     border: 1px solid #e4e4e4;
+    position: relative;
 }
 
-.days_process_container {
-    width: 100px;
-    height: 6px;
-    border-radius: 5px;
-    margin: 0 auto;
-}
+
 
 .days_process {
     display: block;
-    width: 100%;
+    width: 100px;
     height: 4px;
     border-radius: 4px;
     background-image: linear-gradient(to right, #fee140 0%, #fa709a 100%);
+    margin: 0 auto;
+}
+
+.days_more {
+    width: 15px;
+    height: 15px;
+    background: url('../../assets/icon/restart-line.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.5s;
 }
 
 .enterInfo {
