@@ -1,4 +1,6 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer } = require('electron');
+const fs = require('fs');
+const { resolve } = require('path');
 
 class Settings {
     constructor() {
@@ -92,8 +94,8 @@ class Day {
 
     init(aDay, year, month) {
         this.date.innerHTML = aDay;
-        console.log(year, month, aDay);
-        console.log(this.root.childNodes);
+        // console.log(year, month, aDay);
+        // console.log(this.root.childNodes);
         this.more.addEventListener('click', () => {
             if (this.more.Switch) {
                 this.more.style.transform = 'rotate(180deg)';
@@ -148,11 +150,58 @@ class chooseTime {
     }
 }
 
+class Reader {
+    constructor(fs) {
+        this.fs = fs;
+
+        this.init();
+    }
+
+    init() {
+        console.log(this.readJson('/assets/data/AppSetting.json'));
+    }
+
+    readJson(file) {
+        let files = this.readOther(file);
+        let data = JSON.parse(files);
+        return data;
+    }
+    readMarkdown(file) {
+        let files = this.readOther(file);
+    }
+    readOther(file) {
+        let data = this.fs.readFileSync(resolve() + file, 'utf-8');
+        return data;
+    }
+
+}
+class Writer {
+    constructor(fs) {
+        this.fs = fs;
+        this.init();
+    }
+
+    init() {
+
+    }
+
+    writerJson(file) {
+
+    }
+    writerMarkdown(file) {
+
+    }
+    writerOther(file) {
+
+    }
+}
 class ToDos {
     constructor() {
         this.Settings = new Settings();
         this.Today = new Today();
         this.Days = new Days();
+        this.Reader = new Reader(fs);
+        this.Writer = new Writer(fs);
     }
 }
 
