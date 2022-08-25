@@ -80,32 +80,52 @@ class Today {
 }
 
 class Day {
-    constructor(aDay, year, month) {
-        this.root = document.querySelector('.days');
-        this.more = this.root.childNodes[7];
-        this.enterInfo = this.root.childNodes[3];
-        this.date = this.enterInfo.childNodes[1];
-        this.lunar = this.enterInfo.childNodes[3];
-        this.process = this.root.childNodes[5];
-        this.tips = this.root.childNodes[1];
-        this.more.Switch = true;
-        this.init(aDay, year, month);
+    constructor() {
+        this.root = document.createElement('div');
+        this.root.className = 'days'
+        this.tips = document.createElement('div');
+        this.tips.className = 'days_tips';
+        this.enterInfo = document.createElement('div');
+        this.enterInfo.className = 'enterInfo';
+        this.date = document.createElement('div');
+        this.date.className = 'days_time';
+        this.lunar = document.createElement('div');
+        this.lunar.className = 'days_lunar';
+        this.more = document.createElement('div');
+        this.more.className = 'days_more';
+        this.process = document.createElement('div');
+        this.process.className = 'days_process';
+        this.Switch = true;
+        this.init();
     }
 
-    init(aDay, year, month) {
-        this.date.innerHTML = aDay;
-        // console.log(year, month, aDay);
-        // console.log(this.root.childNodes);
+    init() {
         this.more.addEventListener('click', () => {
-            if (this.more.Switch) {
+            if (this.Switch) {
                 this.more.style.transform = 'rotate(180deg)';
-                this.more.Switch = !this.more.Switch
+                this.root.style.transform = 'rotateX(180deg)';
+                this.Switch = !this.Switch
             } else {
                 this.more.style.transform = 'rotate(-180deg)';
-                this.more.Switch = !this.more.Switch
+                this.root.style.transform = 'rotateX(0)';
+                this.Switch = !this.Switch
             }
         })
     }
+
+    assemble(aDay, year, month) {
+        this.date.innerHTML = aDay;
+        this.lunar.innerHTML = 'lunar';
+        this.tips.innerHTML = '<span></span><span></span><span></span>';
+        this.enterInfo.appendChild(this.date);
+        this.enterInfo.appendChild(this.lunar);
+        this.root.appendChild(this.tips);
+        this.root.appendChild(this.enterInfo);
+        this.root.appendChild(this.more);
+        this.root.appendChild(this.process);
+        return this.root;
+    }
+
 }
 
 class Days {
@@ -113,7 +133,6 @@ class Days {
         this.root = document.querySelector('.daysContainer');
         this.daysContainer = {
             count: 0,
-            node: [],
         };
         this.init();
     }
@@ -124,9 +143,10 @@ class Days {
     setDaysContainerInfo(year, month) {
         this.daysContainer.count = new Date(year, month, 0).getDate();
         for (let i = 1; i <= this.daysContainer.count; i++) {
-            this.daysContainer.node.push(new Day(i, year, month));
+            this.root.appendChild(new Day().assemble(i, year, month));
         }
     }
+
 }
 
 class chooseTime {
@@ -141,12 +161,17 @@ class chooseTime {
     init() {
         this.selectMonth.addEventListener('change', () => {
             this.month = this.selectMonth.value;
-            console.log(this.selectMonth.value);
+            this.year = this.selectYear.value;
+            this.reRender(this.month, this.year);
         })
         this.selectYear.addEventListener('change', () => {
+            this.month = this.selectMonth.value;
             this.year = this.selectYear.value;
-            console.log(this.selectYear.value);
+            this.reRender(this.month, this.year);
         });
+    }
+    reRender(month, year) {
+        console.log(month, year);
     }
 }
 
