@@ -180,7 +180,7 @@ body,
 
 }
 
-.days_tips span:nth-child(1) {
+.days_tips_red {
     display: block;
     width: 10px;
     height: 10px;
@@ -188,7 +188,7 @@ body,
     background-color: #F25F58;
 }
 
-.days_tips span:nth-child(2) {
+.days_tips_yellow {
     display: block;
     width: 10px;
     height: 10px;
@@ -196,7 +196,7 @@ body,
     background-color: #FBBE3C;
 }
 
-.days_tips span:nth-child(3) {
+.days_tips_green {
     display: block;
     width: 10px;
     height: 10px;
@@ -255,7 +255,7 @@ body,
     align-items: center;
     justify-content: center;
     position: relative;
-    
+
 }
 
 .options_btn {

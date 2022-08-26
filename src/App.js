@@ -11,7 +11,9 @@ const createWindow = () => {
             preload: path.join(__dirname, './preload.js'),
             webSecurity: false,
             nodeIntegration: true,
-            contextIsolation: false
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModules: true,
         }
     })
     ipcMain.on('open-devtools', () => {

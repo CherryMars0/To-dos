@@ -1,11 +1,12 @@
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
+const path = require('path');
 const { resolve } = require('path');
 
 class Settings {
-    constructor() {
+    constructor(Options, Days) {
         this.root = document.querySelector(".options");
-        this.chooseTime = new chooseTime();
+        this.chooseTime = new chooseTime(Options, Days);
         this.settings = this.root.childNodes[1];
         this.developKit = this.root.childNodes[3].childNodes[3];
         this.reload = this.root.childNodes[3].childNodes[1];
@@ -70,17 +71,18 @@ class Today {
                 this.Switch = !this.Switch
             } else {
                 this.root.childNodes[5].style.transform = 'rotate(-180deg)';
-                this.root.style.transform = 'rotateY(0deg)';
                 this.root.childNodes[1].style.display = 'block';
                 this.root.childNodes[3].style.display = 'block';
+                this.root.style.transform = 'rotateY(0deg)';
                 this.Switch = !this.Switch
             }
         })
+
     }
 }
 
 class Day {
-    constructor() {
+    constructor(Options) {
         this.root = document.createElement('div');
         this.root.className = 'days'
         this.tips = document.createElement('div');
@@ -96,27 +98,51 @@ class Day {
         this.process = document.createElement('div');
         this.process.className = 'days_process';
         this.Switch = true;
-        this.init();
+        this.init(Options);
     }
 
-    init() {
+    init(Options) {
         this.more.addEventListener('click', () => {
             if (this.Switch) {
                 this.more.style.transform = 'rotate(180deg)';
                 this.root.style.transform = 'rotateX(180deg)';
-                this.Switch = !this.Switch
+                this.tips.style.display = 'none';
+                this.process.style.display = 'none';
+                this.enterInfo.style.display = 'none';
+                this.root.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                this.Switch = !this.Switch;
             } else {
                 this.more.style.transform = 'rotate(-180deg)';
                 this.root.style.transform = 'rotateX(0)';
-                this.Switch = !this.Switch
+                this.tips.style.display = 'flex';
+                this.process.style.display = 'block';
+                this.enterInfo.style.display = 'block';
+                this.root.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                this.Switch = !this.Switch;
             }
+        })
+        this.enterInfo.addEventListener('click', (Options) => {
+            let Day = window.open(path.join(__dirname, 'day.html'), 'day');
         })
     }
 
-    assemble(aDay, year, month) {
+    assemble(aDay, year, month, dayInfo) {
+        console.log(dayInfo);
+        let isEmpty = false;
+        if (isEmpty) {
+            let tips_red = document.createElement('span');
+            tips_red.className = 'days_tips_red';
+            this.tips.appendChild(tips_red);
+        } else {
+            let tips_yellow = document.createElement('span');
+            tips_yellow.className = 'days_tips_yellow';
+            let tips_green = document.createElement('span');
+            tips_green.className = 'days_tips_green';
+            this.tips.appendChild(tips_yellow);
+            this.tips.appendChild(tips_green);
+        }
         this.date.innerHTML = aDay;
         this.lunar.innerHTML = 'lunar';
-        this.tips.innerHTML = '<span></span><span></span><span></span>';
         this.enterInfo.appendChild(this.date);
         this.enterInfo.appendChild(this.lunar);
         this.root.appendChild(this.tips);
@@ -129,61 +155,64 @@ class Day {
 }
 
 class Days {
-    constructor() {
+    constructor(Options) {
         this.root = document.querySelector('.daysContainer');
         this.daysContainer = {
             count: 0,
         };
-        this.init();
+        this.init(Options);
     }
 
-    init() {
-        this.setDaysContainerInfo(2022, 8);
+    init(Options) {
+        let BeginDate = Options.BeginDate.split('-');
+        this.setDaysContainerInfo(BeginDate[0], BeginDate[1], Options);
     }
-    setDaysContainerInfo(year, month) {
+    setDaysContainerInfo(year, month, Options) {
+        this.root.innerHTML = '';
+        let dayInfo = Options.Days;
         this.daysContainer.count = new Date(year, month, 0).getDate();
         for (let i = 1; i <= this.daysContainer.count; i++) {
-            this.root.appendChild(new Day().assemble(i, year, month));
+            this.root.appendChild(new Day(Options).assemble(i, year, month, dayInfo));
         }
     }
 
 }
 
 class chooseTime {
-    constructor() {
+    constructor(Options, Days) {
         this.root = document.querySelector('.chooseTime');
         this.selectYear = this.root.childNodes[1];
         this.selectMonth = this.root.childNodes[3];
         this.year = this.selectYear.value;
         this.month = this.selectMonth.value;
-        this.init();
+        this.init(Options, Days);
     }
-    init() {
+    init(Options, Days) {
+        this.render(Options);
         this.selectMonth.addEventListener('change', () => {
             this.month = this.selectMonth.value;
             this.year = this.selectYear.value;
-            this.reRender(this.month, this.year);
+            this.reRender(this.month, this.year, Days, Options);
         })
         this.selectYear.addEventListener('change', () => {
             this.month = this.selectMonth.value;
             this.year = this.selectYear.value;
-            this.reRender(this.month, this.year);
+            this.reRender(this.month, this.year, Days, Options);
         });
     }
-    reRender(month, year) {
-        console.log(month, year);
+    render(Options) {
+        let BeginDate = Options.BeginDate.split('-0');
+        this.selectYear.value = BeginDate[0];
+        this.selectMonth.value = BeginDate[1];
+    }
+    reRender(month, year, Days, Options) {
+        Days.setDaysContainerInfo(year, month, Options);
     }
 }
 
 class Reader {
     constructor(fs) {
         this.fs = fs;
-
-        this.init();
-    }
-
-    init() {
-        console.log(this.readJson('/assets/data/AppSetting.json'));
     }
 
     readJson(file) {
@@ -193,6 +222,7 @@ class Reader {
     }
     readMarkdown(file) {
         let files = this.readOther(file);
+        return files;
     }
     readOther(file) {
         let data = this.fs.readFileSync(resolve() + file, 'utf-8');
@@ -222,11 +252,12 @@ class Writer {
 }
 class ToDos {
     constructor() {
-        this.Settings = new Settings();
-        this.Today = new Today();
-        this.Days = new Days();
         this.Reader = new Reader(fs);
         this.Writer = new Writer(fs);
+        this.Options = this.Reader.readJson('/assets/data/AppSetting.json');
+        this.Today = new Today(this.Options);
+        this.Days = new Days(this.Options);
+        this.Settings = new Settings(this.Options, this.Days);
     }
 }
 
